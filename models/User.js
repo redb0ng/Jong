@@ -32,6 +32,10 @@ const userSchema = mongoose.Schema({
   tokenExp: {
     type: Number,
   },
+  secondpassword: {
+    type: String,
+    minlength: 4,
+  },
 });
 
 userSchema.pre("save", function (next) {
@@ -42,6 +46,16 @@ userSchema.pre("save", function (next) {
       bcrypt.hash(user.password, salt, function (err, hash) {
         if (err) return next(err);
         user.password = hash;
+      });
+    });
+  } else {
+  }
+
+  if (user.isModified("secondpassword")) {
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      bcrypt.hash(user.secondpassword, salt, function (err, hash) {
+        if (err) return next(err);
+        user.secondpassword = hash;
         next();
       });
     });
@@ -49,6 +63,17 @@ userSchema.pre("save", function (next) {
     next();
   }
 });
+
+userSchema.methods.compareSecondPassword = function (plainSecondPassword, cb) {
+  bcrypt.compare(
+    plainSecondPassword,
+    this.secondpassword,
+    function (err, isMatch) {
+      if (err) return cb(err);
+      cb(null, isMatch);
+    }
+  );
+};
 
 userSchema.methods.comparePassword = function (plainPassword, cb) {
   bcrypt.compare(plainPassword, this.password, function (err, isMatch) {

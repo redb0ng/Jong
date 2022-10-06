@@ -20,10 +20,11 @@ module.exports = {
         user.generateToken((err, user) => {
           if (err) return res.status(400).send(err);
 
-          res
-            .cookie("x_auth", user.token)
-            .status(200)
-            .json({ loginSuccess: true, userId: user._id });
+          res.cookie("x_auth", user.token).status(200).json({
+            loginSuccess: true,
+            userId: user._id,
+            userToken: user.token,
+          });
         });
       });
     });
