@@ -19,7 +19,9 @@ const user3Schema = mongoose.Schema({
     type: Number,
     maxlength: 5,
   },
-  image: String,
+  image: {
+    type: String,
+  },
 });
 
 user3Schema.pre("save", function (next) {
