@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const { User } = require("./User");
 
 const user3Schema = mongoose.Schema({
   name: {
@@ -21,6 +22,10 @@ const user3Schema = mongoose.Schema({
   },
   image: {
     type: String,
+  },
+  email: {
+    type: String,
+    unique: 1,
   },
 });
 

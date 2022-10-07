@@ -14,7 +14,7 @@ router.post(
   upload.single("image"),
   userController.idcard.post
 );
-router.get("/api/users/idcard", userController.idcard.get);
+router.get("/api/users/idcard", auth, userController.idcard.get);
 
 router.get("/api/users/logout", auth, userController.logout.get);
 router.get("/api/users/auth", auth, userController.auth.get);
