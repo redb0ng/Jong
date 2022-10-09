@@ -18,8 +18,6 @@ function App() {
       <div className="App-header">
         <Router>
           <NavBar />
-        </Router>
-        <Router>
           <Routes>
             <Route exact path="/" element={Auth(LandingPage, null)} />
             <Route path="/login" element={Auth(LoginPage, false)} />

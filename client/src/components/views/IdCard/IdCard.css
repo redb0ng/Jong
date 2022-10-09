@@ -2,7 +2,7 @@
   background-color: #c1ceec;
   border-color: white;
   border-style: solid;
-  width: 530px;
+  width: 556px;
   height: 45px;
   border-radius: 20px 20px 20px 20px;
   color: rgb(4, 11, 49);
@@ -45,15 +45,14 @@
   color: #2e4d90;
   opacity: 0.7;
   font-size: 50px;
-  text-align: center;
   font-family: "Times New Roman", Times, serif;
   border-width: 50px;
+  margin-bottom: 0;
 }
 .link {
   text-decoration: none;
   color: rgb(252, 242, 242);
   font-size: 15px;
-  text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .link:hover {
@@ -71,19 +70,32 @@
   background-color: #bddff7;
   border-color: white;
   border-style: dashed;
-  width: 500px;
+  width: 556px;
   height: 45px;
   border-radius: 20px 20px 20px 20px;
   color: rgb(4, 11, 49);
-  margin-bottom: 1em;
+  margin: 1em 0;
   padding: 0 16px;
 }
 .label {
-  color: white;
+  color: rgb(163, 163, 163);
   font-size: 17px;
   font-family: "Times New Roman", Times, serif;
   opacity: 1;
+  text-align: left;
 }
 .heart {
   color: rgb(248, 226, 239);
+}
+
+.inputImg {
+  padding: 30px 0 20px;
+  margin: auto;
+}
+.Img {
+  margin: auto;
+}
+
+img {
+  margin: auto;
 }

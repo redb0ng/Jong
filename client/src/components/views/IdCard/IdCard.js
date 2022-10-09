@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { idUser } from "../../../_actions/user_action";
 import { Link, useNavigate } from "react-router-dom";
 import "../IdCard/IdCard.css";
-const people = require("../../../videos/profile.jpg");
+const people = require("../../../images/profile.jpg");
 
 function IdCard() {
   const dispatch = useDispatch();
@@ -24,6 +24,10 @@ function IdCard() {
       console.log("이미지주소", reader.result);
     };
   };
+
+  // const onClickFileBtn = (e) => {
+  //   imgRef.current.click();
+  // };
 
   const [Name, setName] = useState("");
   const [Id, setId] = useState("");
@@ -74,64 +78,83 @@ function IdCard() {
         alignItems: "center",
         width: "100%",
         height: "100vh",
-        backgroundImage: "url(img/gh.jpg) ",
-        backgroundSize: "cover",
       }}
     >
       <form
-        style={{ display: "flex", flexDirection: "column" }}
+        className="Img"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "0",
+        }}
         onSubmit={onSubmitHandler}
       >
         <div className="Logo">
-          Welcome
-          <hr />
+          Idcard
+          <hr className="hr" />
         </div>
         <br />
         <br />
-        <React.Fragment>
-          <img
-            src={imageUrl ? imageUrl : people}
-            style={{ width: "200px", height: "200px" }}
+        <div
+          className="form"
+          style={{ display: "flex", flexDirection: "column" }}
+          onSubmit={onSubmitHandler}
+        >
+          <React.Fragment>
+            <img
+              src={imageUrl ? imageUrl : people}
+              style={{ width: "200px", height: "200px" }}
+            ></img>
+            <input
+              className="inputImg"
+              type="file"
+              ref={imgRef}
+              onChange={onChangeImage}
+            />
+          </React.Fragment>
+          <label className="label"> 이름</label>
+          <input
+            className="input_box"
+            //placeholder="user@naver.com"
+            type="text"
+            value={Name}
+            onChange={onNameHandler}
+          ></input>
+          {/* <input className='input_box' type="email" value={Email} onChange={onEmailHandler}   /> */}
+          <label className="label">주민번호</label>
+          <input
+            className="input_box"
+            type="text"
+            value={Id}
+            onChange={onIdHandler}
           />
-          <input type="file" ref={imgRef} onChange={onChangeImage} />
-        </React.Fragment>
-        <label className="label"> 이름</label>
-        <Input
-          className="input_box"
-          type="text"
-          value={Name}
-          onChange={onNameHandler}
-        ></Input>
+          <label className="label">나이</label>
+          <input
+            className="input_box"
+            type="number"
+            value={Age}
+            onChange={onAgeHandler}
+          />
+          <label className="label">주소</label>
+          <input
+            className="input_box"
+            type="text"
+            value={Address}
+            onChange={onAddressHandler}
+          />
 
-        <label className="label">주민번호</label>
-        <input
-          className="input_box"
-          type="text"
-          value={Id}
-          onChange={onIdHandler}
-        />
-        <label className="label">나이</label>
-        <input
-          className="input_box"
-          type="number"
-          value={Age}
-          onChange={onAgeHandler}
-        />
-        <label className="label">주소</label>
-        <input
-          className="input_box"
-          type="text"
-          value={Address}
-          onChange={onAddressHandler}
-        />
+          <button id="button" type="submit">
+            등록
+          </button>
+          {/* <Button id="button" htmlType="submit">
+          Login
+        </Button>
+        <br /> */}
 
-        <button id="button" type="submit">
-          등록
-        </button>
-
-        <Link className="link" to="/">
-          Home
-        </Link>
+          <Link className="link" to="/">
+            Home
+          </Link>
+        </div>
       </form>
     </div>
   );
