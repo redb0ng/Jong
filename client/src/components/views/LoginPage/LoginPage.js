@@ -59,10 +59,9 @@ function LoginPage() {
         onSubmit={onSubmitHandler}
       >
         <div className="Logo">
-          {/* <FontAwesomeIcon icon={faHeart} /> */} Welcome
+          Welcome
           <hr className="hr" />
         </div>
-        {/* <div><img alt="iPhone_01" src="img/e.jpg" alignItems= 'center'   height="400px"  width="500px"/></div> */}
         <br />
         <br />
         <div
@@ -78,7 +77,6 @@ function LoginPage() {
             value={Email}
             onChange={onEmailHandler}
           ></input>
-          {/* <input className='input_box' type="email" value={Email} onChange={onEmailHandler}   /> */}
           <label className="label">Password</label>
           <input
             className="input_box"

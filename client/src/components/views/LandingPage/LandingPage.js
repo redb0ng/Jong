@@ -1,7 +1,4 @@
 import React from "react";
-// import { useEffect } from "react";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import "../LandingPage/LandingPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -14,12 +11,6 @@ import "react-pro-sidebar/dist/css/styles.css";
 ></script>;
 
 function LandingPage() {
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   axios.get("/api/hello").then((response) => console.log(response.data));
-  // }, []);
-
   return (
     <div>
       <section id="home">

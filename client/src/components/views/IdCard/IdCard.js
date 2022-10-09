@@ -25,10 +25,6 @@ function IdCard() {
     };
   };
 
-  // const onClickFileBtn = (e) => {
-  //   imgRef.current.click();
-  // };
-
   const [Name, setName] = useState("");
   const [Id, setId] = useState("");
   const [Age, setAge] = useState("");
@@ -87,28 +83,26 @@ function IdCard() {
         onSubmit={onSubmitHandler}
       >
         <div className="Logo">
-          {/* <FontAwesomeIcon icon={faHeart} /> */} Welcome
+          Welcome
           <hr />
         </div>
-        {/* <div><img alt="iPhone_01" src="img/e.jpg" alignItems= 'center'   height="400px"  width="500px"/></div> */}
         <br />
         <br />
         <React.Fragment>
           <img
             src={imageUrl ? imageUrl : people}
             style={{ width: "200px", height: "200px" }}
-          ></img>
+          />
           <input type="file" ref={imgRef} onChange={onChangeImage} />
         </React.Fragment>
         <label className="label"> 이름</label>
         <Input
           className="input_box"
-          //placeholder="user@naver.com"
           type="text"
           value={Name}
           onChange={onNameHandler}
         ></Input>
-        {/* <input className='input_box' type="email" value={Email} onChange={onEmailHandler}   /> */}
+
         <label className="label">주민번호</label>
         <input
           className="input_box"
@@ -134,10 +128,6 @@ function IdCard() {
         <button id="button" type="submit">
           등록
         </button>
-        {/* <Button id="button" htmlType="submit">
-          Login
-        </Button>
-        <br /> */}
 
         <Link className="link" to="/">
           Home
