@@ -1,69 +1,40 @@
-import React, { useEffect } from "react";
-import { FaBars } from "react-icons/fa";
-import {
-  Nav,
-  NavbarContainer,
-  NavLogo,
-  MobileIcon,
-  NavMenu,
-  NavItem,
-  NavLinks,
-  NavBtn,
-  NavBtnLink,
-} from "./NavBarElements";
-import { useNavigate } from "react-router-dom";
-import { Button } from "react-scroll";
-import axios from "axios";
+import React, { useState } from "react";
+import LeftMenu from "./Sections/LeftMenu";
+import RightMenu from "./Sections/RightMenu";
+import { Drawer, Button } from "antd";
+//import { Icon } from "@ant-design/icons";
+import "./Sections/Navbar.css";
+const Logo = require("../../../videos/logo.jpg");
 
-function NavBar({ toggle }) {
-  const navigate = useNavigate();
-
-  const onSignHandler = () => {
-    navigate("/login");
-  };
-  const clickMe = () => {
-    navigate("/qr_generator");
-  };
+function NavBar() {
   return (
-    <>
-      <Nav>
-        <NavbarContainer>
-          <NavLogo to="/">최종장박봉</NavLogo>
-          <MobileIcon onClick={toggle}>
-            <FaBars />
-          </MobileIcon>
-          <NavMenu>
-            <NavItem>
-              <NavLinks to="about">About</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="bbb">bbb</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="ccc">ccc</NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks to="ddd">ddd</NavLinks>
-            </NavItem>
-          </NavMenu>
-          <NavBtn>
-            <NavBtnLink to="/login">LOGIN</NavBtnLink>
-          </NavBtn>
-        </NavbarContainer>
-        <button onClick={onSignHandler}>로그인</button>
-        <button onClick={clickMe}>등록</button>
-      </Nav>
-    </>
+    <nav
+      className="menu"
+      style={{
+        position: "fixed",
+        zIndex: 1,
+        width: "100%",
+      }}
+    >
+      <div className="menu__logo">
+        <a href="/">
+          <img
+            src={Logo}
+            alt="Logo"
+            style={{ height: "60px", width: "60px", marginTop: "-25px" }}
+          />
+        </a>
+      </div>
+      <div className="menu__container">
+        <div className="menu_left">
+          <LeftMenu />
+        </div>
+        <div className="menu_rigth">
+          <RightMenu />
+        </div>
+      </div>
+    </nav>
   );
 }
 
 export default NavBar;
-// import React from 'react'
-
-// const NavBar = () => {
-//   return (
-//     <div>NavBar</div>
-//   )
-// }
-
-// export default NavBar

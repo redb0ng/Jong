@@ -1,31 +1,38 @@
-import React, { useState } from "react";
-import Modal from "../Modal/Modal";
-import { Button, Input } from "antd";
+import React, { useState, useRef } from "react";
+import { Input } from "antd";
 import { useDispatch } from "react-redux";
-// import { registerUser } from "../../../_actions/user_action";
 import { idUser } from "../../../_actions/user_action";
 import { Link, useNavigate } from "react-router-dom";
-import { Add } from "@material-ui/icons";
 import "../IdCard/IdCard.css";
+const people = require("../../../videos/profile.jpg");
 
 function IdCard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => {
-    setModalOpen(true);
+  const [imageUrl, setImageUrl] = useState(null);
+  const imgRef = useRef();
+
+  const onChangeImage = () => {
+    const reader = new FileReader();
+    const file = imgRef.current.files[0];
+    console.log(file);
+
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImageUrl(reader.result);
+      console.log("이미지주소", reader.result);
+    };
   };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+
+  // const onClickFileBtn = (e) => {
+  //   imgRef.current.click();
+  // };
 
   const [Name, setName] = useState("");
   const [Id, setId] = useState("");
   const [Age, setAge] = useState("");
   const [Address, setAddress] = useState("");
-  const [Password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
 
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
@@ -43,23 +50,8 @@ function IdCard() {
     setAddress(event.currentTarget.value);
   };
 
-  const onConfirmPasswordHandler = (event) => {
-    setConfirmPassword(event.currentTarget.value);
-  };
-
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
-
   const onSubmitHandler = (event) => {
     event.preventDefault();
-
-    // console.log("Name", Name);
-    // console.log("Id", Id);
-
-    // if (Password !== ConfirmPassword) {
-    //   return alert("비밀번호와 비밀번호 확인은 같아야 합니다.");
-    // }
 
     let body = {
       name: Name,
@@ -71,33 +63,9 @@ function IdCard() {
     dispatch(idUser(body)).then((response) => {
       if (response.payload.success) {
         alert("민증 등록");
-        navigate("/qr_generator");
+        navigate("/second");
       } else {
         alert("민증 등록 실패");
-      }
-    });
-  };
-
-  const onSubmitHandler2 = (event) => {
-    event.preventDefault();
-
-    // console.log("Name", Name);
-    // console.log("Id", Id);
-
-    if (Password !== ConfirmPassword) {
-      return alert("비밀번호와 비밀번호 확인은 같아야 합니다.");
-    }
-
-    let body = {
-      password: Password,
-      confirmPassword: ConfirmPassword,
-    };
-
-    dispatch(idUser(body)).then((response) => {
-      if (response.payload.success) {
-        alert("2차 확인");
-      } else {
-        alert("2차 확인 실패");
       }
     });
   };
@@ -125,6 +93,13 @@ function IdCard() {
         {/* <div><img alt="iPhone_01" src="img/e.jpg" alignItems= 'center'   height="400px"  width="500px"/></div> */}
         <br />
         <br />
+        <React.Fragment>
+          <img
+            src={imageUrl ? imageUrl : people}
+            style={{ width: "200px", height: "200px" }}
+          ></img>
+          <input type="file" ref={imgRef} onChange={onChangeImage} />
+        </React.Fragment>
         <label className="label"> 이름</label>
         <Input
           className="input_box"
@@ -164,27 +139,6 @@ function IdCard() {
         </Button>
         <br /> */}
 
-        <React.Fragment>
-          <button onClick={openModal}>인증하기</button>
-          <Modal open={modalOpen} close={closeModal} header="비밀번호 입력">
-            <div>
-              <label className="label">Password</label>
-              <Input
-                type="password"
-                value={Password}
-                onChange={onPasswordHandler}
-              />
-              {/* <Input
-                type="password"
-                value={ConfirmPassword}
-                onChange={onConfirmPasswordHandler}
-              /> */}
-              <Button id="button" htmlType="submit">
-                확인
-              </Button>
-            </div>
-          </Modal>
-        </React.Fragment>
         <Link className="link" to="/">
           Home
         </Link>

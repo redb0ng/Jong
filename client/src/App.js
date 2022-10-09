@@ -9,17 +9,16 @@ import QRgen from "./components/views/QR/QRgenerator";
 import QRscanner from "./components/views/QR/QRscanner";
 import IdCard from "./components/views/IdCard/IdCard";
 import Auth from "./hoc/auth";
-// import { TramOutlined } from "@material-ui/icons";
-import Home from "./components/views/utils/Home";
 import NavBar from "./components/views/NavBar/NavBar";
+import Second from "./components/views/Second/Second";
 
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        {/* <Router>
+        <Router>
           <NavBar />
-        </Router> */}
+        </Router>
         <Router>
           <Routes>
             <Route exact path="/" element={Auth(LandingPage, null)} />
@@ -28,6 +27,7 @@ function App() {
             <Route path="/qr_generator" element={Auth(QRgen, true)} />
             <Route path="/qr_scanner" element={Auth(QRscanner, true, true)} />
             <Route path="/idcard" element={Auth(IdCard, true)} />
+            <Route path="/second" element={Auth(Second, true)} />
           </Routes>
         </Router>
       </div>

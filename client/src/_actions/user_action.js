@@ -1,5 +1,11 @@
 import axios from "axios";
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, ID_USER } from "./types";
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  ID_USER,
+  PASSWORD2_USER,
+} from "./types";
 
 export function loginUser(dataTosubmit) {
   const request = axios
@@ -30,6 +36,17 @@ export function idUser(dataTosubmit) {
 
   return {
     type: ID_USER,
+    payload: request,
+  };
+}
+
+export function password2User(dataTosubmit) {
+  const request = axios
+    .post("/api/users/secondpassword", dataTosubmit)
+    .then((response) => response.data);
+
+  return {
+    type: PASSWORD2_USER,
     payload: request,
   };
 }
