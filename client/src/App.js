@@ -11,6 +11,7 @@ import IdCard from "./components/views/IdCard/IdCard";
 import Auth from "./hoc/auth";
 import NavBar from "./components/views/NavBar/NavBar";
 import Second from "./components/views/Second/Second";
+import Upload from "./components/views/Upload/Upload";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/qr_scanner" element={Auth(QRscanner, true, true)} />
             <Route path="/idcard" element={Auth(IdCard, true)} />
             <Route path="/second" element={Auth(Second, true)} />
+            <Route path="/upload" element={Auth(Upload, null)} />
           </Routes>
         </Router>
       </div>
