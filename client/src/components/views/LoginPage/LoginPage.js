@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "antd/dist/antd.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-
 import "../LoginPage/LoginPage.css";
+
 function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

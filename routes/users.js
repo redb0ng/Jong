@@ -11,7 +11,7 @@ router.post("/api/users/register", userController.register.post);
 router.post("/api/users/secPw", userController.secPw.post);
 router.post(
   "/api/users/idcard",
-  upload.single("image"),
+  upload.single("file"),
   userController.idcard.post
 );
 router.get("/api/users/idcard", auth, userController.idcard.get);

@@ -3,13 +3,19 @@ import { Fab, TextareaAutosize } from "@material-ui/core";
 import { ArrowBack } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import QrScan from "react-qr-reader";
+import { message } from "antd";
 import "../QR/qrGen.css";
 
 function QRscanner() {
   const [qrscan, setQrscan] = useState("");
+  const [text, setText] = useState("");
   const handleScan = (data) => {
     if (data) {
       setQrscan(data);
+      setText(message.success("성인 인증 완료"));
+      setTimeout(function () {
+        window.location.reload();
+      }, 2500);
     }
   };
   const handleError = (err) => {
@@ -43,7 +49,7 @@ function QRscanner() {
               marginTop: 200,
             }}
             rowsMax={4}
-            defaultValue={qrscan}
+            defaultValue={text}
             value={qrscan}
           />
         </div>

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { idUser } from "../../../_actions/user_action";
 import { Link, useNavigate } from "react-router-dom";
 import "../IdCard/IdCard.css";
+import Test from "../Test/Test";
 const people = require("../../../images/profile.jpg");
 
 function IdCard() {
@@ -100,7 +101,7 @@ function IdCard() {
           style={{ display: "flex", flexDirection: "column" }}
           onSubmit={onSubmitHandler}
         >
-          <React.Fragment>
+          {/* <React.Fragment>
             <img
               src={imageUrl ? imageUrl : people}
               style={{ width: "200px", height: "200px" }}
@@ -111,8 +112,9 @@ function IdCard() {
               ref={imgRef}
               onChange={onChangeImage}
             />
-          </React.Fragment>
-          <label className="label"> 이름</label>
+          </React.Fragment> */}
+          {/* <Test></Test> */}
+          <label className="label1"> 이름</label>
           <input
             className="input_box"
             //placeholder="user@naver.com"
