@@ -5,4 +5,5 @@ module.exports = {
   idcard: require("./idcard"),
   auth: require("./auth"),
   secPw: require("./secPw"),
+  image: require("./image"),
 };

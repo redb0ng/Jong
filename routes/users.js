@@ -18,5 +18,6 @@ router.get("/api/users/idcard", auth, userController.idcard.get);
 
 router.get("/api/users/logout", auth, userController.logout.get);
 router.get("/api/users/auth", auth, userController.auth.get);
+router.get("/api/image/getImages", userController.image.get);
 
 module.exports = router;
